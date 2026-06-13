@@ -1,0 +1,158 @@
+{
+  "schemes": [
+    {
+      "id": "mudra-shishu",
+      "name": "MUDRA Shishu",
+      "tag": "No Collateral",
+      "tagColor": "teal",
+      "description": "For micro-enterprises starting up",
+      "loanLimit": "Up to ₹50,000",
+      "interestRate": "7%-12% p.a.",
+      "collateral": "No collateral required",
+      "sectors": "All sectors",
+      "guaranteeBody": "MUDRA / SIDBI",
+      "tenure": "3-7 years",
+      "eligibility": [
+        "Annual turnover < ₹5 lakhs",
+        "Non-farm income-generating activities",
+        "No existing default on loans",
+        "Valid Aadhaar & PAN"
+      ],
+      "maxTurnover": 500000,
+      "minCibil": 0,
+      "requiresCollateral": false
+    },
+    {
+      "id": "mudra-kishor",
+      "name": "MUDRA Kishor",
+      "tag": "Popular",
+      "tagColor": "blue",
+      "description": "For established micro-enterprises",
+      "loanLimit": "₹50,000 – ₹5 Lakh",
+      "interestRate": "8%-13% p.a.",
+      "collateral": "Optional for < ₹10L",
+      "sectors": "Manufacturing, Services, Trade",
+      "guaranteeBody": "MUDRA / Bank",
+      "tenure": "3-7 years",
+      "eligibility": [
+        "Annual turnover < ₹25 lakhs",
+        "Business operational for 6+ months",
+        "No existing default on loans",
+        "Valid Aadhaar, PAN & GST (optional)"
+      ],
+      "maxTurnover": 2500000,
+      "minCibil": 600,
+      "requiresCollateral": false
+    },
+    {
+      "id": "mudra-tarun",
+      "name": "MUDRA Tarun",
+      "tag": "High Value",
+      "tagColor": "purple",
+      "description": "For growing small enterprises",
+      "loanLimit": "₹5 Lakh – ₹10 Lakh",
+      "interestRate": "9%-14% p.a.",
+      "collateral": "May be required",
+      "sectors": "All sectors",
+      "guaranteeBody": "MUDRA / Bank",
+      "tenure": "5-7 years",
+      "eligibility": [
+        "Annual turnover < ₹1 crore",
+        "Business operational for 1+ year",
+        "CIBIL score 650+",
+        "Valid Aadhaar, PAN & GST"
+      ],
+      "maxTurnover": 10000000,
+      "minCibil": 650,
+      "requiresCollateral": true
+    },
+    {
+      "id": "cgtmse",
+      "name": "CGTMSE",
+      "tag": "No Guarantor",
+      "tagColor": "orange",
+      "description": "Credit Guarantee Fund for Micro & Small Enterprises",
+      "loanLimit": "Up to ₹2 Crore",
+      "interestRate": "9%-15% p.a.",
+      "collateral": "No third-party guarantee",
+      "sectors": "Manufacturing & Services",
+      "guaranteeBody": "CGTMSE / SIDBI",
+      "tenure": "5-10 years",
+      "eligibility": [
+        "Annual turnover < ₹100 crore",
+        "Registered MSE unit",
+        "CIBIL score 650+",
+        "No NPA in last 2 years"
+      ],
+      "maxTurnover": 1000000000,
+      "minCibil": 650,
+      "requiresCollateral": false
+    }
+  ],
+  "banks": [
+    {
+      "id": "sbi",
+      "name": "State Bank of India",
+      "shortName": "SBI",
+      "badge": "Lowest interest rates",
+      "badgeColor": "teal",
+      "bgColor": "#1a3a6b",
+      "rating": 4.5,
+      "type": "MSME Lender",
+      "minCibil": 650,
+      "processingDays": "7-15 days",
+      "minLoan": "₹50,000",
+      "maxLoan": "₹2 Crore",
+      "schemes": ["MUDRA", "CGTMSE", "Stand-Up India"],
+      "collateralNote": "Collateral: Optional < ₹10L"
+    },
+    {
+      "id": "pnb",
+      "name": "Punjab National Bank",
+      "shortName": "PNB",
+      "badge": "Widest branch network",
+      "badgeColor": "red",
+      "bgColor": "#8b1a1a",
+      "rating": 4.2,
+      "type": "MSME Lender",
+      "minCibil": 660,
+      "processingDays": "10-20 days",
+      "minLoan": "₹1 Lakh",
+      "maxLoan": "₹1 Crore",
+      "schemes": ["MUDRA", "PMEGP"],
+      "collateralNote": "Collateral: Required > ₹5L"
+    },
+    {
+      "id": "icici",
+      "name": "ICICI Bank",
+      "shortName": "ICICI",
+      "badge": "Fastest processing",
+      "badgeColor": "orange",
+      "bgColor": "#b84c00",
+      "rating": 4.4,
+      "type": "MSME Lender",
+      "minCibil": 680,
+      "processingDays": "5-10 days",
+      "minLoan": "₹1 Lakh",
+      "maxLoan": "₹2 Crore",
+      "schemes": ["MUDRA", "CGTMSE"],
+      "collateralNote": "Collateral: Optional < ₹20L"
+    },
+    {
+      "id": "hdfc",
+      "name": "HDFC Bank",
+      "shortName": "HDFC",
+      "badge": "Best digital experience",
+      "badgeColor": "blue",
+      "bgColor": "#00447c",
+      "rating": 4.3,
+      "type": "MSME Lender",
+      "minCibil": 670,
+      "processingDays": "7-12 days",
+      "minLoan": "₹2 Lakh",
+      "maxLoan": "₹3 Crore",
+      "schemes": ["MUDRA", "CGTMSE", "PMEGP"],
+      "collateralNote": "Collateral: Optional < ₹15L"
+    }
+  ]
+}

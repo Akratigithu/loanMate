@@ -1,0 +1,42 @@
+{
+  "applications": [
+    {
+      "id": "LM-2026-ICB-4821",
+      "bank": "ICICI Bank",
+      "scheme": "MUDRA Kishor",
+      "amount": 350000,
+      "status": "approved",
+      "progress": 90,
+      "submittedAt": "2026-05-10",
+      "updatedAt": "2026-06-01",
+      "applicantName": "Ravi Kumar",
+      "businessName": "Ravi Enterprises",
+      "timeline": [
+        {"step": "Application Submitted", "date": "2026-05-10", "done": true},
+        {"step": "Document Verification", "date": "2026-05-15", "done": true},
+        {"step": "Credit Assessment", "date": "2026-05-22", "done": true},
+        {"step": "Loan Approved", "date": "2026-06-01", "done": true},
+        {"step": "Disbursement Pending", "date": null, "done": false}
+      ]
+    },
+    {
+      "id": "LM-2026-SBI-3310",
+      "bank": "SBI",
+      "scheme": "CGTMSE",
+      "amount": 1000000,
+      "status": "under-review",
+      "progress": 45,
+      "submittedAt": "2026-05-28",
+      "updatedAt": "2026-06-10",
+      "applicantName": "Ravi Kumar",
+      "businessName": "Ravi Enterprises",
+      "timeline": [
+        {"step": "Application Submitted", "date": "2026-05-28", "done": true},
+        {"step": "Document Verification", "date": "2026-06-03", "done": true},
+        {"step": "Credit Assessment", "date": null, "done": false},
+        {"step": "Loan Approved", "date": null, "done": false},
+        {"step": "Disbursement Pending", "date": null, "done": false}
+      ]
+    }
+  ]
+}

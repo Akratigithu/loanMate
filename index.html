@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoanMate — AI-Powered Loan Assistant for MSMEs</title>
+  <meta name="description" content="Check your eligibility across MUDRA, CGTMSE, PMEGP schemes. Auto-fill applications and track disbursements conversationally with LoanMate AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ── Toast Container ──────────────────────────────────── -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a class="navbar-logo" href="#" onclick="navigate('home')">
+      <div class="logo-icon">✦</div>
+      <span class="logo-text">Loan<span>Mate</span></span>
+    </a>
+
+    <ul class="navbar-nav" id="navLinks">
+      <li><button class="nav-link active" onclick="navigate('home'); setActiveNav(this)">Home</button></li>
+      <li><button class="nav-link" onclick="navigate('schemes'); setActiveNav(this)">Schemes</button></li>
+      <li><button class="nav-link" onclick="navigate('banks'); setActiveNav(this)">Banks</button></li>
+      <li><button class="nav-link" onclick="navigate('chat'); setActiveNav(this)">AI Agent</button></li>
+      <li><button class="nav-link" onclick="navigate('tracker'); setActiveNav(this)">Track Loan</button></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <button class="btn-icon" id="darkModeBtn" onclick="toggleDarkMode()" title="Toggle dark mode">🌙</button>
+      <button class="btn-outline" onclick="navigate('login')">Log In</button>
+      <button class="btn-primary" onclick="navigate('signup')">Sign Up</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: HOME
+════════════════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">AI-Powered · Trusted by 12,000+ MSMEs</div>
+        <h1 class="hero-title">
+          AI-powered Loan<br/>
+          <span class="accent">Assistant</span> for MSMEs
+        </h1>
+        <p class="hero-subtitle">
+          Check eligibility, auto-fill forms, and track loan status — all conversationally. Get matched to the right government scheme in minutes.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-hero-primary" onclick="navigate('chat')">
+            💬 Get Started Free →
+          </button>
+          <button class="btn-hero-secondary" onclick="navigate('schemes')">
+            Explore Schemes
+          </button>
+        </div>
+        <div class="hero-trust">
+          <span class="trust-badge"><span class="icon">✓</span> SIDBI Partner</span>
+          <span class="trust-badge"><span class="icon">✓</span> RBI Compliant</span>
+          <span class="trust-badge"><span class="icon">✓</span> ISO 27001 Certified</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span class="stat-card-title">Scheme Matched</span>
+            <span class="stat-card-badge badge-success">Eligible ✓</span>
+          </div>
+          <div class="stat-card-value">MUDRA Kishor</div>
+          <div class="stat-card-sub">Up to ₹5,00,000 · 8%-13% p.a.</div>
+          <div class="stat-card-bar">
+            <div class="stat-card-bar-fill" style="width: 87%"></div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span class="stat-card-title">Documents Extracted</span>
+            <span class="stat-card-badge badge-teal">97% Accuracy</span>
+          </div>
+          <div class="stat-card-value">4 / 4</div>
+          <div class="stat-card-sub">Aadhaar · PAN · GST · Bank Statement</div>
+          <div class="stat-card-bar">
+            <div class="stat-card-bar-fill" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span class="stat-card-title">Application Status</span>
+            <span class="stat-card-badge badge-warning">Under Review</span>
+          </div>
+          <div class="stat-card-value">₹3,50,000</div>
+          <div class="stat-card-sub">ICICI Bank · Ref: LM-2026-ICB-4821</div>
+          <div class="stat-card-bar">
+            <div class="stat-card-bar-fill" style="width: 65%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section-alt">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">How It Works</div>
+        <h2 class="section-title">From Chat to Cash in 4 Steps</h2>
+        <p class="section-subtitle">Our AI agent guides you through the entire loan journey — no bank visits needed.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-icon">💬</div>
+          <div class="step-number">1</div>
+          <div class="step-title">Chat with AI</div>
+          <div class="step-desc">Answer a few conversational questions about your business to get started.</div>
+        </div>
+        <div class="how-step">
+          <div class="step-icon">🎯</div>
+          <div class="step-number">2</div>
+          <div class="step-title">Check Eligibility</div>
+          <div class="step-desc">AI checks your eligibility across 10+ government schemes instantly.</div>
+        </div>
+        <div class="how-step">
+          <div class="step-icon">📄</div>
+          <div class="step-number">3</div>
+          <div class="step-title">Auto-fill Forms</div>
+          <div class="step-desc">Upload Aadhaar, PAN, GST — AI extracts and fills application forms automatically.</div>
+        </div>
+        <div class="how-step">
+          <div class="step-icon">📊</div>
+          <div class="step-number">4</div>
+          <div class="step-title">Track Disbursement</div>
+          <div class="step-desc">Real-time updates on your loan status from submission to disbursement.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schemes Preview -->
+  <section class="section" id="home-schemes-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Loan Schemes</div>
+        <h2 class="section-title">Find Your Perfect Scheme</h2>
+        <p class="section-subtitle">Government-backed schemes with low interest rates and flexible repayment.</p>
+      </div>
+      <!-- Schemes rendered by JS -->
+      <div id="home-schemes-tabs" class="scheme-tabs"></div>
+      <div id="home-schemes-cards"></div>
+      <div style="text-align:center;margin-top:28px">
+        <button class="btn-scheme-primary" onclick="navigate('schemes')">View All Schemes →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banks Preview -->
+  <section class="section section-alt">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Partner Banks</div>
+        <h2 class="section-title">Available Banks &amp; Lenders</h2>
+        <p class="section-subtitle">Choose from top partner banks with competitive rates and fast processing.</p>
+      </div>
+      <div id="home-banks-grid" class="banks-grid"></div>
+    </div>
+  </section>
+
+  <!-- Chat Teaser -->
+  <section class="chat-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">AI Chat Interface</div>
+        <h2 class="section-title">Talk to LoanMate AI</h2>
+        <p class="section-subtitle">Answer a few questions and get matched to the best scheme in minutes.</p>
+      </div>
+      <div class="chat-wrapper" id="home-chat-wrapper"></div>
+    </div>
+  </section>
+
+  <!-- Tracker Preview -->
+  <section class="tracker-section">
+    <div class="section-container tracker-container">
+      <div class="section-header" style="text-align:left">
+        <div class="section-tag">Loan Status</div>
+        <h2 class="section-title">Track Your Loan Status</h2>
+        <p class="section-subtitle">Real-time updates on your loan application across all banks.</p>
+      </div>
+      <div id="home-tracker"></div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: SCHEMES
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-schemes">
+  <section class="section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Loan Schemes</div>
+        <h2 class="section-title">Government Loan Schemes</h2>
+        <p class="section-subtitle">Explore all schemes, check eligibility criteria, and apply directly.</p>
+      </div>
+      <div id="full-schemes-tabs" class="scheme-tabs"></div>
+      <div id="full-schemes-cards"></div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: BANKS
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-banks">
+  <section class="section">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">Partner Banks</div>
+        <h2 class="section-title">Available Banks &amp; Lenders</h2>
+        <p class="section-subtitle">Compare banks, interest rates, CIBIL requirements, and available schemes.</p>
+      </div>
+      <div id="full-banks-grid" class="banks-grid"></div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: AI CHAT
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-chat">
+  <section class="chat-section" style="min-height:calc(100vh - 64px);padding:40px 24px">
+    <div class="section-container">
+      <div class="section-header">
+        <div class="section-tag">AI Chat Interface</div>
+        <h2 class="section-title">Talk to LoanMate AI</h2>
+        <p class="section-subtitle">I can check eligibility, auto-fill applications, and track your disbursements.</p>
+      </div>
+      <div class="chat-wrapper" id="full-chat-wrapper"></div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: TRACKER
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-tracker">
+  <section class="tracker-section" style="min-height:calc(100vh - 64px)">
+    <div class="section-container tracker-container">
+      <div class="section-header" style="text-align:left">
+        <div class="section-tag">Loan Status</div>
+        <h2 class="section-title">Track Your Loan Status</h2>
+        <p class="section-subtitle">Real-time updates on your loan application across all banks.</p>
+      </div>
+      <div id="full-tracker"></div>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: LOGIN
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-login">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="navbar-logo" style="justify-content:center">
+          <div class="logo-icon">✦</div>
+          <span class="logo-text">Loan<span>Mate</span></span>
+        </div>
+      </div>
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-sub">Sign in to access your loan dashboard</p>
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="loginPhone">Phone Number / Email</label>
+          <input class="form-input" type="text" id="loginPhone" placeholder="+91 9876543210" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input class="form-input" type="password" id="loginPassword" placeholder="Enter your password" required />
+        </div>
+        <button class="btn-auth-submit" type="submit" id="loginBtn">Sign In</button>
+      </form>
+      <div class="auth-footer">
+        Don't have an account? <span class="auth-link" onclick="navigate('signup')">Sign Up</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: SIGNUP
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-signup">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="navbar-logo" style="justify-content:center">
+          <div class="logo-icon">✦</div>
+          <span class="logo-text">Loan<span>Mate</span></span>
+        </div>
+      </div>
+      <h1 class="auth-title">Create Account</h1>
+      <p class="auth-sub">Join 12,000+ MSMEs using LoanMate</p>
+      <form onsubmit="handleSignup(event)">
+        <div class="form-group">
+          <label class="form-label" for="signupName">Full Name</label>
+          <input class="form-input" type="text" id="signupName" placeholder="Ravi Kumar" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signupPhone">Phone Number</label>
+          <input class="form-input" type="tel" id="signupPhone" placeholder="+91 9876543210" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signupBusiness">Business Name</label>
+          <input class="form-input" type="text" id="signupBusiness" placeholder="Ravi Enterprises" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="signupPassword">Password</label>
+          <input class="form-input" type="password" id="signupPassword" placeholder="Create a strong password" required />
+        </div>
+        <button class="btn-auth-submit" type="submit" id="signupBtn">Create Account</button>
+      </form>
+      <div class="auth-footer">
+        Already have an account? <span class="auth-link" onclick="navigate('login')">Sign In</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- Floating Chat Button -->
+<button class="float-chat-btn" onclick="navigate('chat')" title="Chat with LoanMate AI" id="floatChatBtn">💬</button>
+
+<!-- Hidden file input for document upload -->
+<input type="file" id="docFileInput" accept=".pdf,.jpg,.jpeg,.png" style="display:none" onchange="handleFileUpload(event)" />
+
+<!-- Scripts -->
+<script src="js/app.js"></script>
+<script src="js/schemes.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/tracker.js"></script>
+</body>
+</html>
