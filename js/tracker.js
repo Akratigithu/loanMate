@@ -17,7 +17,7 @@ async function initTrackerWidget(containerId) {
   const apps = await apiGet('/applications') || getFallbackApps();
 
   container.innerHTML = `
-    <div style="font-size:0.78rem;color:var(--gray-400);font-weight:600;letter-spacing:0.05em;margin-bottom:12px">MY APPLICATIONS</div>
+    <div style="font-size:0.78rem;color:var(--gray-400);font-weight:600;letter-spacing:0.05em;margin-bottom:12px">${t('myApplications')}</div>
     <div class="applications-list" style="margin-bottom:0">
       ${apps.map(a => buildApplicationListItem(a)).join('')}
     </div>
@@ -39,12 +39,12 @@ async function initTrackerPage() {
   const container = document.getElementById('full-tracker');
   if (!container) return;
 
-  container.innerHTML = `<div style="text-align:center;padding:40px;color:var(--gray-400)">Loading applications...</div>`;
+  container.innerHTML = `<div style="text-align:center;padding:40px;color:var(--gray-400)">${t('loadingApplications')}</div>`;
 
   const apps = await apiGet('/applications') || getFallbackApps();
 
   container.innerHTML = `
-    <div style="font-size:0.78rem;color:var(--gray-400);font-weight:600;letter-spacing:0.05em;margin-bottom:12px">MY APPLICATIONS</div>
+    <div style="font-size:0.78rem;color:var(--gray-400);font-weight:600;letter-spacing:0.05em;margin-bottom:12px">${t('myApplications')}</div>
     <div class="applications-list">
       ${apps.map(a => buildApplicationListItem(a, 'full')).join('')}
     </div>
@@ -97,27 +97,27 @@ function buildApplicationDetail(app) {
         <div>
           <div class="app-detail-bank">${app.bank} — ${app.scheme}</div>
           <div class="app-detail-scheme">${app.applicantName} · ${app.businessName}</div>
-          <div class="app-ref">Ref ${app.id}</div>
+          <div class="app-ref">${t('refText')} ${app.id}</div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
           <div class="app-amount-badge">₹${app.amount.toLocaleString('en-IN')}</div>
-          <button class="app-refresh-btn" onclick="refreshApplication('${app.id}')" title="Refresh status">🔄</button>
+          <button class="app-refresh-btn" onclick="refreshApplication('${app.id}')" title="${t('refreshStatus')}">🔄</button>
         </div>
       </div>
       <div class="timeline">
-        <div style="font-size:0.85rem;font-weight:700;color:var(--gray-700);margin-bottom:16px">Application Timeline</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--gray-700);margin-bottom:16px">${t('applicationTimeline')}</div>
         ${app.timeline.map((step, i) => `
           <div class="timeline-step ${step.done ? 'done' : ''}">
             <div class="timeline-dot">${step.done ? '✓' : i + 1}</div>
             <div class="timeline-content">
               <div class="timeline-title">${step.step}</div>
-              <div class="timeline-date">${step.date ? formatDate(step.date) : 'Pending'}</div>
+              <div class="timeline-date">${step.date ? formatDate(step.date) : t('pendingText')}</div>
             </div>
           </div>
         `).join('')}
       </div>
       <div style="padding:16px 24px;border-top:1px solid var(--gray-100);display:flex;gap:12px">
-        <button class="btn-scheme-primary" onclick="navigate('chat');showToast('Opening chat to ask about ${app.id}...','info')">
+        <button class="btn-scheme-primary" onclick="navigate('chat');showToast(t('openingChatAbout',{id:'${app.id}'}),'info')">
           💬 Ask AI About This
         </button>
         <button class="btn-scheme-secondary">Download Letter</button>

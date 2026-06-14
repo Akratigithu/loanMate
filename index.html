@@ -24,17 +24,18 @@
     </a>
 
     <ul class="navbar-nav" id="navLinks">
-      <li><button class="nav-link active" onclick="navigate('home'); setActiveNav(this)">Home</button></li>
-      <li><button class="nav-link" onclick="navigate('schemes'); setActiveNav(this)">Schemes</button></li>
-      <li><button class="nav-link" onclick="navigate('banks'); setActiveNav(this)">Banks</button></li>
-      <li><button class="nav-link" onclick="navigate('chat'); setActiveNav(this)">AI Agent</button></li>
-      <li><button class="nav-link" onclick="navigate('tracker'); setActiveNav(this)">Track Loan</button></li>
+      <li><button class="nav-link active" onclick="navigate('home'); setActiveNav(this)" data-i18n-key="navHome">Home</button></li>
+      <li><button class="nav-link" onclick="navigate('schemes'); setActiveNav(this)" data-i18n-key="navSchemes">Schemes</button></li>
+      <li><button class="nav-link" onclick="navigate('banks'); setActiveNav(this)" data-i18n-key="navBanks">Banks</button></li>
+      <li><button class="nav-link" onclick="navigate('chat'); setActiveNav(this)" data-i18n-key="navChat">AI Agent</button></li>
+      <li><button class="nav-link" onclick="navigate('tracker'); setActiveNav(this)" data-i18n-key="navTracker">Track Loan</button></li>
     </ul>
 
     <div class="navbar-actions">
       <button class="btn-icon" id="darkModeBtn" onclick="toggleDarkMode()" title="Toggle dark mode">🌙</button>
-      <button class="btn-outline" onclick="navigate('login')">Log In</button>
-      <button class="btn-primary" onclick="navigate('signup')">Sign Up</button>
+      <button class="btn-outline" onclick="toggleLanguage()" id="languageBtn" data-i18n-title="languageToggleTitle">हिंदी</button>
+      <button class="btn-outline" onclick="navigate('login')" data-i18n-key="login">Log In</button>
+      <button class="btn-primary" onclick="navigate('signup')" data-i18n-key="signup">Sign Up</button>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -53,26 +54,26 @@
   <section class="hero">
     <div class="hero-container">
       <div class="hero-content">
-        <div class="hero-badge">AI-Powered · Trusted by 12,000+ MSMEs</div>
-        <h1 class="hero-title">
+        <div class="hero-badge" data-i18n-key="heroBadge">AI-Powered · Trusted by 12,000+ MSMEs</div>
+        <h1 class="hero-title" data-i18n-html="true" data-i18n-key="heroTitle">
           AI-powered Loan<br/>
           <span class="accent">Assistant</span> for MSMEs
         </h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" data-i18n-key="heroSubtitle">
           Check eligibility, auto-fill forms, and track loan status — all conversationally. Get matched to the right government scheme in minutes.
         </p>
         <div class="hero-actions">
-          <button class="btn-hero-primary" onclick="navigate('chat')">
+          <button class="btn-hero-primary" onclick="navigate('chat')" data-i18n-key="heroPrimary">
             💬 Get Started Free →
           </button>
-          <button class="btn-hero-secondary" onclick="navigate('schemes')">
+          <button class="btn-hero-secondary" onclick="navigate('schemes')" data-i18n-key="heroSecondary">
             Explore Schemes
           </button>
         </div>
         <div class="hero-trust">
-          <span class="trust-badge"><span class="icon">✓</span> SIDBI Partner</span>
-          <span class="trust-badge"><span class="icon">✓</span> RBI Compliant</span>
-          <span class="trust-badge"><span class="icon">✓</span> ISO 27001 Certified</span>
+          <span class="trust-badge" data-i18n-key="heroTrust1"><span class="icon">✓</span> SIDBI Partner</span>
+          <span class="trust-badge" data-i18n-key="heroTrust2"><span class="icon">✓</span> RBI Compliant</span>
+          <span class="trust-badge" data-i18n-key="heroTrust3"><span class="icon">✓</span> ISO 27001 Certified</span>
         </div>
       </div>
 
@@ -120,34 +121,34 @@
   <section class="section section-alt">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">How It Works</div>
-        <h2 class="section-title">From Chat to Cash in 4 Steps</h2>
-        <p class="section-subtitle">Our AI agent guides you through the entire loan journey — no bank visits needed.</p>
+        <div class="section-tag" data-i18n-key="howTag">How It Works</div>
+        <h2 class="section-title" data-i18n-key="howTitle">From Chat to Cash in 4 Steps</h2>
+        <p class="section-subtitle" data-i18n-key="howSubtitle">Our AI agent guides you through the entire loan journey — no bank visits needed.</p>
       </div>
       <div class="how-steps">
         <div class="how-step">
           <div class="step-icon">💬</div>
           <div class="step-number">1</div>
-          <div class="step-title">Chat with AI</div>
-          <div class="step-desc">Answer a few conversational questions about your business to get started.</div>
+          <div class="step-title" data-i18n-key="step1Title">Chat with AI</div>
+          <div class="step-desc" data-i18n-key="step1Desc">Answer a few conversational questions about your business to get started.</div>
         </div>
         <div class="how-step">
           <div class="step-icon">🎯</div>
           <div class="step-number">2</div>
-          <div class="step-title">Check Eligibility</div>
-          <div class="step-desc">AI checks your eligibility across 10+ government schemes instantly.</div>
+          <div class="step-title" data-i18n-key="step2Title">Check Eligibility</div>
+          <div class="step-desc" data-i18n-key="step2Desc">AI checks your eligibility across 10+ government schemes instantly.</div>
         </div>
         <div class="how-step">
           <div class="step-icon">📄</div>
           <div class="step-number">3</div>
-          <div class="step-title">Auto-fill Forms</div>
-          <div class="step-desc">Upload Aadhaar, PAN, GST — AI extracts and fills application forms automatically.</div>
+          <div class="step-title" data-i18n-key="step3Title">Auto-fill Forms</div>
+          <div class="step-desc" data-i18n-key="step3Desc">Upload Aadhaar, PAN, GST — AI extracts and fills application forms automatically.</div>
         </div>
         <div class="how-step">
           <div class="step-icon">📊</div>
           <div class="step-number">4</div>
-          <div class="step-title">Track Disbursement</div>
-          <div class="step-desc">Real-time updates on your loan status from submission to disbursement.</div>
+          <div class="step-title" data-i18n-key="step4Title">Track Disbursement</div>
+          <div class="step-desc" data-i18n-key="step4Desc">Real-time updates on your loan status from submission to disbursement.</div>
         </div>
       </div>
     </div>
@@ -157,15 +158,15 @@
   <section class="section" id="home-schemes-section">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">Loan Schemes</div>
-        <h2 class="section-title">Find Your Perfect Scheme</h2>
-        <p class="section-subtitle">Government-backed schemes with low interest rates and flexible repayment.</p>
+        <div class="section-tag" data-i18n-key="schemesTag">Loan Schemes</div>
+        <h2 class="section-title" data-i18n-key="schemesTitle">Find Your Perfect Scheme</h2>
+        <p class="section-subtitle" data-i18n-key="schemesSubtitle">Government-backed schemes with low interest rates and flexible repayment.</p>
       </div>
       <!-- Schemes rendered by JS -->
       <div id="home-schemes-tabs" class="scheme-tabs"></div>
       <div id="home-schemes-cards"></div>
       <div style="text-align:center;margin-top:28px">
-        <button class="btn-scheme-primary" onclick="navigate('schemes')">View All Schemes →</button>
+        <button class="btn-scheme-primary" onclick="navigate('schemes')" data-i18n-key="schemesButton">View All Schemes →</button>
       </div>
     </div>
   </section>
@@ -174,9 +175,9 @@
   <section class="section section-alt">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">Partner Banks</div>
-        <h2 class="section-title">Available Banks &amp; Lenders</h2>
-        <p class="section-subtitle">Choose from top partner banks with competitive rates and fast processing.</p>
+        <div class="section-tag" data-i18n-key="banksTag">Partner Banks</div>
+        <h2 class="section-title" data-i18n-key="banksTitle">Available Banks &amp; Lenders</h2>
+        <p class="section-subtitle" data-i18n-key="banksSubtitle">Choose from top partner banks with competitive rates and fast processing.</p>
       </div>
       <div id="home-banks-grid" class="banks-grid"></div>
     </div>
@@ -186,9 +187,9 @@
   <section class="chat-section">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">AI Chat Interface</div>
-        <h2 class="section-title">Talk to LoanMate AI</h2>
-        <p class="section-subtitle">Answer a few questions and get matched to the best scheme in minutes.</p>
+        <div class="section-tag" data-i18n-key="chatTeaserTag">AI Chat Interface</div>
+        <h2 class="section-title" data-i18n-key="chatTeaserTitle">Talk to LoanMate AI</h2>
+        <p class="section-subtitle" data-i18n-key="chatTeaserSubtitle">Answer a few questions and get matched to the best scheme in minutes.</p>
       </div>
       <div class="chat-wrapper" id="home-chat-wrapper"></div>
     </div>
@@ -216,9 +217,9 @@
   <section class="section">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">Loan Schemes</div>
-        <h2 class="section-title">Government Loan Schemes</h2>
-        <p class="section-subtitle">Explore all schemes, check eligibility criteria, and apply directly.</p>
+        <div class="section-tag" data-i18n-key="schemesTag">Loan Schemes</div>
+        <h2 class="section-title" data-i18n-key="schemesTitle">Government Loan Schemes</h2>
+        <p class="section-subtitle" data-i18n-key="schemesSubtitle">Explore all schemes, check eligibility criteria, and apply directly.</p>
       </div>
       <div id="full-schemes-tabs" class="scheme-tabs"></div>
       <div id="full-schemes-cards"></div>
@@ -234,9 +235,9 @@
   <section class="section">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">Partner Banks</div>
-        <h2 class="section-title">Available Banks &amp; Lenders</h2>
-        <p class="section-subtitle">Compare banks, interest rates, CIBIL requirements, and available schemes.</p>
+        <div class="section-tag" data-i18n-key="banksTag">Partner Banks</div>
+        <h2 class="section-title" data-i18n-key="banksTitle">Available Banks &amp; Lenders</h2>
+        <p class="section-subtitle" data-i18n-key="banksSubtitle">Compare banks, interest rates, CIBIL requirements, and available schemes.</p>
       </div>
       <div id="full-banks-grid" class="banks-grid"></div>
     </div>
@@ -251,9 +252,9 @@
   <section class="chat-section" style="min-height:calc(100vh - 64px);padding:40px 24px">
     <div class="section-container">
       <div class="section-header">
-        <div class="section-tag">AI Chat Interface</div>
-        <h2 class="section-title">Talk to LoanMate AI</h2>
-        <p class="section-subtitle">I can check eligibility, auto-fill applications, and track your disbursements.</p>
+        <div class="section-tag" data-i18n-key="chatPageTag">AI Chat Interface</div>
+        <h2 class="section-title" data-i18n-key="chatPageTitle">Talk to LoanMate AI</h2>
+        <p class="section-subtitle" data-i18n-key="chatPageSubtitle">I can check eligibility, auto-fill applications, and track your disbursements.</p>
       </div>
       <div class="chat-wrapper" id="full-chat-wrapper"></div>
     </div>
@@ -268,9 +269,9 @@
   <section class="tracker-section" style="min-height:calc(100vh - 64px)">
     <div class="section-container tracker-container">
       <div class="section-header" style="text-align:left">
-        <div class="section-tag">Loan Status</div>
-        <h2 class="section-title">Track Your Loan Status</h2>
-        <p class="section-subtitle">Real-time updates on your loan application across all banks.</p>
+        <div class="section-tag" data-i18n-key="trackerTag">Loan Status</div>
+        <h2 class="section-title" data-i18n-key="trackerTitle">Track Your Loan Status</h2>
+        <p class="section-subtitle" data-i18n-key="trackerSubtitle">Real-time updates on your loan application across all banks.</p>
       </div>
       <div id="full-tracker"></div>
     </div>
@@ -290,21 +291,21 @@
           <span class="logo-text">Loan<span>Mate</span></span>
         </div>
       </div>
-      <h1 class="auth-title">Welcome back</h1>
-      <p class="auth-sub">Sign in to access your loan dashboard</p>
+      <h1 class="auth-title" data-i18n-key="loginTitle">Welcome back</h1>
+      <p class="auth-sub" data-i18n-key="loginSub">Sign in to access your loan dashboard</p>
       <form onsubmit="handleLogin(event)">
         <div class="form-group">
-          <label class="form-label" for="loginPhone">Phone Number / Email</label>
-          <input class="form-input" type="text" id="loginPhone" placeholder="+91 9876543210" required />
+          <label class="form-label" for="loginPhone" data-i18n-key="loginPhoneLabel">Phone Number / Email</label>
+          <input class="form-input" type="text" id="loginPhone" placeholder="+91 9876543210" data-i18n-placeholder="loginPhonePlaceholder" required />
         </div>
         <div class="form-group">
-          <label class="form-label" for="loginPassword">Password</label>
-          <input class="form-input" type="password" id="loginPassword" placeholder="Enter your password" required />
+          <label class="form-label" for="loginPassword" data-i18n-key="loginPasswordLabel">Password</label>
+          <input class="form-input" type="password" id="loginPassword" placeholder="Enter your password" data-i18n-placeholder="loginPasswordPlaceholder" required />
         </div>
-        <button class="btn-auth-submit" type="submit" id="loginBtn">Sign In</button>
+        <button class="btn-auth-submit" type="submit" id="loginBtn" data-i18n-key="loginSubmit">Sign In</button>
       </form>
       <div class="auth-footer">
-        Don't have an account? <span class="auth-link" onclick="navigate('signup')">Sign Up</span>
+        <span data-i18n-key="loginSignupText">Don't have an account? </span><span class="auth-link" onclick="navigate('signup')" data-i18n-key="signup">Sign Up</span>
       </div>
     </div>
   </div>
@@ -323,29 +324,29 @@
           <span class="logo-text">Loan<span>Mate</span></span>
         </div>
       </div>
-      <h1 class="auth-title">Create Account</h1>
-      <p class="auth-sub">Join 12,000+ MSMEs using LoanMate</p>
+      <h1 class="auth-title" data-i18n-key="signupTitle">Create Account</h1>
+      <p class="auth-sub" data-i18n-key="signupSub">Join 12,000+ MSMEs using LoanMate</p>
       <form onsubmit="handleSignup(event)">
         <div class="form-group">
-          <label class="form-label" for="signupName">Full Name</label>
-          <input class="form-input" type="text" id="signupName" placeholder="Ravi Kumar" required />
+          <label class="form-label" for="signupName" data-i18n-key="signupNameLabel">Full Name</label>
+          <input class="form-input" type="text" id="signupName" placeholder="Ravi Kumar" data-i18n-placeholder="signupNamePlaceholder" required />
         </div>
         <div class="form-group">
-          <label class="form-label" for="signupPhone">Phone Number</label>
-          <input class="form-input" type="tel" id="signupPhone" placeholder="+91 9876543210" required />
+          <label class="form-label" for="signupPhone" data-i18n-key="signupPhoneLabel">Phone Number</label>
+          <input class="form-input" type="tel" id="signupPhone" placeholder="+91 9876543210" data-i18n-placeholder="signupPhonePlaceholder" required />
         </div>
         <div class="form-group">
-          <label class="form-label" for="signupBusiness">Business Name</label>
-          <input class="form-input" type="text" id="signupBusiness" placeholder="Ravi Enterprises" required />
+          <label class="form-label" for="signupBusiness" data-i18n-key="signupBusinessLabel">Business Name</label>
+          <input class="form-input" type="text" id="signupBusiness" placeholder="Ravi Enterprises" data-i18n-placeholder="signupBusinessPlaceholder" required />
         </div>
         <div class="form-group">
-          <label class="form-label" for="signupPassword">Password</label>
-          <input class="form-input" type="password" id="signupPassword" placeholder="Create a strong password" required />
+          <label class="form-label" for="signupPassword" data-i18n-key="signupPasswordLabel">Password</label>
+          <input class="form-input" type="password" id="signupPassword" placeholder="Create a strong password" data-i18n-placeholder="signupPasswordPlaceholder" required />
         </div>
-        <button class="btn-auth-submit" type="submit" id="signupBtn">Create Account</button>
+        <button class="btn-auth-submit" type="submit" id="signupBtn" data-i18n-key="signupSubmit">Create Account</button>
       </form>
       <div class="auth-footer">
-        Already have an account? <span class="auth-link" onclick="navigate('login')">Sign In</span>
+        <span data-i18n-key="signupLoginText">Already have an account? </span><span class="auth-link" onclick="navigate('login')" data-i18n-key="login">Sign In</span>
       </div>
     </div>
   </div>

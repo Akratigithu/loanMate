@@ -33,9 +33,9 @@ class LoanMateChat {
           <div class="chat-agent-info">
             <div class="chat-avatar">🤖</div>
             <div>
-              <div class="chat-agent-name">LoanMate AI Assistant</div>
+              <div class="chat-agent-name">${t('chatAgentName')}</div>
               <div class="chat-agent-status">
-                <span class="chat-status-dot"></span>Online · Typically replies instantly
+                <span class="chat-status-dot"></span>${t('chatAgentStatus')}
               </div>
             </div>
           </div>
@@ -44,14 +44,29 @@ class LoanMateChat {
         <div class="chat-messages" id="${cid}-messages"></div>
         <div class="chat-input-area">
           <div class="chat-input-wrapper">
-            <button class="chat-upload-btn" onclick="getChatInstance('${cid}').triggerUpload()" title="Upload Document">📎</button>
-            <input class="chat-input" id="${cid}-input" placeholder="Type a message or choose an option above..."
+            <button class="chat-upload-btn" onclick="getChatInstance('${cid}').triggerUpload()" title="${t('uploadButtonTitle')}">📎</button>
+            <input class="chat-input" id="${cid}-input" placeholder="${t('chatInputPlaceholder')}"
               onkeydown="if(event.key==='Enter')getChatInstance('${cid}').sendUserMessage()" />
           </div>
-          <button class="chat-send-btn" onclick="getChatInstance('${cid}').sendUserMessage()" title="Send">➤</button>
+          <button class="chat-send-btn" onclick="getChatInstance('${cid}').sendUserMessage()" title="${t('sendButtonTitle')}">➤</button>
         </div>
       </div>
     `;
+  }
+
+  updateLanguage() {
+    const box = document.getElementById(`${this.containerId}-box`);
+    if (!box) return;
+    const nameEl = box.querySelector('.chat-agent-name');
+    if (nameEl) nameEl.textContent = t('chatAgentName');
+    const statusEl = box.querySelector('.chat-agent-status');
+    if (statusEl) statusEl.innerHTML = `<span class="chat-status-dot"></span>${t('chatAgentStatus')}`;
+    const input = box.querySelector('.chat-input');
+    if (input) input.placeholder = t('chatInputPlaceholder');
+    const uploadBtn = box.querySelector('.chat-upload-btn');
+    if (uploadBtn) uploadBtn.title = t('uploadButtonTitle');
+    const sendBtn = box.querySelector('.chat-send-btn');
+    if (sendBtn) sendBtn.title = t('sendButtonTitle');
   }
 
   get messagesEl() { return document.getElementById(`${this.containerId}-messages`); }
@@ -131,8 +146,8 @@ class LoanMateChat {
     await sleep(900);
     this.removeTyping();
     this.addBotMessage(
-      '👋 Hello! I\'m LoanMate, your AI loan assistant. I\'ll help you find the best government loan scheme for your business. Let\'s start — **what type of business do you run?**',
-      ['Manufacturing', 'Retail / Trade', 'Service Business', 'Agriculture-linked']
+      t('botGreeting'),
+      t('botGreetingChips')
     );
     this.step = 'businessType';
   }
@@ -167,7 +182,7 @@ class LoanMateChat {
     this.removeTyping();
 
     if (!response) {
-      this.addBotMessage('Sorry, I had trouble processing that. Please try again.', ['Start Over', 'Check Eligibility']);
+      this.addBotMessage(t('apiErrorMessage', {}), [t('startOver'), t('checkEligibility')]);
       return;
     }
 
@@ -191,33 +206,33 @@ class LoanMateChat {
     if (this.step === 'eligibility') {
       setTimeout(() => {
         this.addBotMessage(
-          '📄 Would you like me to **auto-fill your loan application**? Just upload your documents and I\'ll extract the information automatically.',
-          ['Upload Documents', 'Fill Manually', 'Skip for Now']
+          t('uploadPrompt'),
+          t('uploadPromptChips')
         );
         this.step = 'upload';
       }, 1500);
     }
 
     // Handle upload prompt
-    if (text === 'Upload Documents' || text === 'upload') {
+    if ([...t('uploadPromptChips')].includes(text) || /upload/i.test(text)) {
       setTimeout(() => this.showDocumentUploadPrompt(), 300);
     }
 
     // Handle track status
-    if (text === 'Track My Loan' || text === 'Show All Applications') {
+    if ([...t('noApplicationsChips')].includes(text) || /track my loan/i.test(text) || /show all applications/i.test(text)) {
       setTimeout(() => this.showLoanStatus(), 300);
     }
   }
 
   async runEligibilityCheck() {
-    const loadingDiv = this.addBotMessage('🔍 Analyzing your eligibility across all government schemes...');
+    const loadingDiv = this.addBotMessage(t('eligibilityAnalysis'));
     
     // Animated dots
     let dots = 0;
     const interval = setInterval(() => {
       dots = (dots + 1) % 4;
       const bubble = loadingDiv?.querySelector('.message-bubble');
-      if (bubble) bubble.textContent = '🔍 Analyzing your eligibility' + '.'.repeat(dots);
+      if (bubble) bubble.textContent = t('eligibilityProgressPrefix') + '.'.repeat(dots);
     }, 400);
 
     await sleep(2000);
@@ -298,8 +313,8 @@ class LoanMateChat {
 
   offerApply() {
     this.addBotMessage(
-      '🏦 Which bank would you like to apply through?',
-      ['SBI — Lowest Rates', 'ICICI — Fastest Processing', 'HDFC — Best Digital', 'PNB — Wide Network']
+      t('offerApply'),
+      t('offerApplyChips')
     );
     this.step = 'select_bank';
   }
@@ -312,17 +327,17 @@ class LoanMateChat {
     div.innerHTML = `
       <div class="message-avatar">🤖</div>
       <div class="message-bubble">
-        Please select the document type and upload your file:
+        ${t('selectDocumentPrompt')}
         <div class="doc-type-grid" style="margin-top:12px">
-          <button class="doc-type-btn active" onclick="getChatInstance('${cid}').selectDocType(this,'aadhaar')">🪪 Aadhaar Card</button>
-          <button class="doc-type-btn" onclick="getChatInstance('${cid}').selectDocType(this,'pan')">🗒️ PAN Card</button>
-          <button class="doc-type-btn" onclick="getChatInstance('${cid}').selectDocType(this,'gst')">📋 GST Certificate</button>
-          <button class="doc-type-btn" onclick="getChatInstance('${cid}').selectDocType(this,'bankStatement')">🏦 Bank Statement</button>
+          <button class="doc-type-btn active" onclick="getChatInstance('${cid}').selectDocType(this,'aadhaar')">${t('docTypeAadhaar')}</button>
+          <button class="doc-type-btn" onclick="getChatInstance('${cid}').selectDocType(this,'pan')">${t('docTypePan')}</button>
+          <button class="doc-type-btn" onclick="getChatInstance('${cid}').selectDocType(this,'gst')">${t('docTypeGst')}</button>
+          <button class="doc-type-btn" onclick="getChatInstance('${cid}').selectDocType(this,'bankStatement')">${t('docTypeBankStatement')}</button>
         </div>
         <div class="doc-upload-card" onclick="getChatInstance('${cid}').triggerUpload()" style="margin-top:8px">
           <div class="doc-upload-icon">📤</div>
-          <div class="doc-upload-text">Click to Upload Document</div>
-          <div class="doc-upload-sub">PDF, JPG or PNG · Max 10MB</div>
+          <div class="doc-upload-text">${t('uploadCardText')}</div>
+          <div class="doc-upload-sub">${t('uploadCardSub')}</div>
         </div>
       </div>
     `;
@@ -342,7 +357,7 @@ class LoanMateChat {
   }
 
   async processUploadedFile(file, docType) {
-    this.addMessage('user', `📎 Uploaded: ${file.name}`);
+    this.addMessage('user', t('uploadedFileLabel') + ' ' + file.name);
     
     // Show upload progress
     const progressDiv = document.createElement('div');
@@ -431,16 +446,16 @@ class LoanMateChat {
     await sleep(300);
     this.uploadedDocs.push(this.currentDocType);
     this.addBotMessage(
-      `✅ Information confirmed! Would you like to upload another document, or shall we proceed with the application?`,
-      ['Upload Another Document', 'Proceed to Apply', 'Skip & Apply Later']
+      t('confirmExtractedMessage'),
+      t('confirmExtractedChips')
     );
     this.step = 'post_upload';
-    showToast('Document data confirmed and auto-filled!', 'success');
+    showToast(t('documentDataConfirmed'), 'success');
   }
 
   editExtracted() {
-    this.addBotMessage('You can edit the information in the application form. Shall I open the form?',
-      ['Yes, Open Form', 'No, Confirm As Is']);
+    this.addBotMessage(t('editExtractedQuestion'),
+      [t('yesOpenForm'), t('noConfirmAsIs')]);
   }
 
   async showLoanStatus() {
@@ -450,8 +465,8 @@ class LoanMateChat {
 
     const apps = await apiGet('/applications');
     if (!apps || !apps.length) {
-      this.addBotMessage('You have no active applications. Would you like to start a new one?',
-        ['Check Eligibility', 'Explore Schemes']);
+      this.addBotMessage(t('noApplications'),
+        t('noApplicationsChips'));
       return;
     }
 
@@ -477,11 +492,11 @@ class LoanMateChat {
           </div>
         `).join('')}
         <button class="btn-confirm" style="margin-top:6px" onclick="navigate('tracker')">
-          View Full Tracker →
+          ${t('viewFullTrackerButton')}
         </button>
       </div>
     `;
-    this.addBotMessage(`📊 Here are your **${apps.length} active application${apps.length > 1 ? 's' : ''}**:`, [], cardsHtml);
+    this.addBotMessage(t('activeApplications', { count: apps.length, plural: apps.length > 1 ? 's' : '' }), [], cardsHtml);
   }
 }
 

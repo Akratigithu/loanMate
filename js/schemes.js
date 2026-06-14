@@ -57,11 +57,11 @@ async function initSchemeComponents(tabsId, cardsId) {
         </div>
         <div class="scheme-stats">
           <div>
-            <div class="scheme-stat-label">Loan Limit</div>
+              <div class="scheme-stat-label">${t('loanLimit')}</div>
             <div class="scheme-stat-value">${s.loanLimit}</div>
           </div>
           <div>
-            <div class="scheme-stat-label">Interest Rate</div>
+            <div class="scheme-stat-label">${t('interestRate')}</div>
             <div class="scheme-stat-value">${s.interestRate}</div>
           </div>
         </div>
@@ -69,7 +69,7 @@ async function initSchemeComponents(tabsId, cardsId) {
       <div class="scheme-card-body">
         <div class="scheme-card-left">
           <div class="eligibility-title">
-            <span style="color:var(--teal-500)">ⓘ</span> Eligibility Criteria
+            <span style="color:var(--teal-500)">ⓘ</span> ${t('eligibilityCriteria')}
           </div>
           <ul class="eligibility-list">
             ${s.eligibility.map(e => `
@@ -81,18 +81,18 @@ async function initSchemeComponents(tabsId, cardsId) {
           </ul>
         </div>
         <div class="scheme-card-right">
-          <div class="details-title">Loan Details</div>
-          <div class="detail-row"><span class="detail-label">Collateral</span><span class="detail-value">${s.collateral}</span></div>
-          <div class="detail-row"><span class="detail-label">Eligible Sectors</span><span class="detail-value">${s.sectors}</span></div>
-          <div class="detail-row"><span class="detail-label">Guarantee Body</span><span class="detail-value">${s.guaranteeBody}</span></div>
-          <div class="detail-row"><span class="detail-label">Repayment Tenure</span><span class="detail-value">${s.tenure}</span></div>
+          <div class="details-title">${t('loanDetails')}</div>
+          <div class="detail-row"><span class="detail-label">${t('collateral')}</span><span class="detail-value">${s.collateral}</span></div>
+          <div class="detail-row"><span class="detail-label">${t('eligibleSectors')}</span><span class="detail-value">${s.sectors}</span></div>
+          <div class="detail-row"><span class="detail-label">${t('guaranteeBody')}</span><span class="detail-value">${s.guaranteeBody}</span></div>
+          <div class="detail-row"><span class="detail-label">${t('repaymentTenure')}</span><span class="detail-value">${s.tenure}</span></div>
         </div>
       </div>
       <div class="scheme-card-footer">
-        <button class="btn-scheme-primary" onclick="navigate('chat');showToast('Starting eligibility check for ${s.name}...','info')">
-          Check My Eligibility →
+        <button class="btn-scheme-primary" onclick="navigate('chat');showToast(t('startingEligibilityCheck',{name:'${s.name}'}),'info')">
+          ${t('checkMyEligibility')}
         </button>
-        <button class="btn-scheme-secondary" onclick="navigate('chat')">Learn More</button>
+        <button class="btn-scheme-secondary" onclick="navigate('chat')">${t('learnMore')}</button>
       </div>
     </div>
   `).join('');
@@ -153,10 +153,10 @@ async function initBankComponents(gridId, limit = null) {
       <div class="bank-collateral-note">🕐 ${b.collateralNote}</div>
       <div class="bank-card-footer">
         <button class="btn-bank-primary" style="background:${b.bgColor}"
-          onclick="navigate('chat');showToast('Checking eligibility for ${b.name}...','info')">
-          View Criteria ↗
+          onclick="navigate('chat');showToast(t('checkingEligibility',{name:'${b.name}'}),'info')">
+          ${t('viewCriteria')}
         </button>
-        <button class="btn-bank-secondary" onclick="showToast('Compare feature coming soon!','info')">Compare</button>
+        <button class="btn-bank-secondary" onclick="showToast(t('compareComingSoon'),'info')">${t('compare')}</button>
       </div>
     </div>
   `).join('');
